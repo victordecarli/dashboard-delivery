@@ -1,4 +1,5 @@
 import {Cadastro} from '../components/Cadastro/Cadastro';
+import Localizacao from '../components/localizacao/localizacao';
 import { Login } from '../components/Login/Login';
 import Pedidos from '../components/Pedidos/Pedidos';
 
@@ -10,6 +11,7 @@ export function App() {
       <Login/>
       <Cadastro/>
       <Pedidos/>
+      <Localizacao/>
     </div>
   )
 }
