@@ -1,41 +1,28 @@
-import React, { useState } from "react";
-import "../../global.css"; // Importa o CSS global
-
-/**
- * Componente de formulário de pesquisa de contato.
- * Permite ao usuário enviar nome, email e mensagem.
- * Ao enviar, chama a função onEnviar passada via props.
- */
+import { useState } from 'react';
+import '../../global.css';
 export default function ContatoPesquisa({ onEnviar }) {
-  // Estados para armazenar os valores dos campos do formulário
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [mensagem, setMensagem] = useState("");
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
-  // Função chamada ao submeter o formulário
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validação simples: não permite campos vazios
     if (!nome || !email || !mensagem) return;
-    // Chama a função recebida por props, enviando os dados
     onEnviar({ nome, email, mensagem, data: new Date().toLocaleString() });
-    // Limpa os campos após o envio
-    setNome("");
-    setEmail("");
-    setMensagem("");
+    setNome('');
+    setEmail('');
+    setMensagem('');
   };
 
   return (
-    // Container do formulário de contato
     <div className="contato-container">
       <h1 className="contato-titulo">Pesquisa de Contato</h1>
-      {/* Formulário de contato */}
       <form onSubmit={handleSubmit} className="contato-form">
         <label>
           Nome:
           <input
             value={nome}
-            onChange={e => setNome(e.target.value)}
+            onChange={(e) => setNome(e.target.value)}
             required
             className="contato-input"
           />
@@ -45,7 +32,7 @@ export default function ContatoPesquisa({ onEnviar }) {
           <input
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="contato-input"
           />
@@ -54,14 +41,15 @@ export default function ContatoPesquisa({ onEnviar }) {
           Mensagem:
           <textarea
             value={mensagem}
-            onChange={e => setMensagem(e.target.value)}
+            onChange={(e) => setMensagem(e.target.value)}
             required
             className="contato-textarea"
           />
         </label>
-        <button type="submit" className="contato-botao">Enviar</button>
+        <button type="submit" className="contato-botao">
+          Enviar
+        </button>
       </form>
-      {/* Estilos específicos para o componente, usando classes para facilitar customização no global.css */}
       <style>
         {`
           .contato-container {
