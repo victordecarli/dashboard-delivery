@@ -9,7 +9,7 @@ function Pedidos() {
 
   return (
     <div className="pedidos-container">
-      <h2 className="titulo">📦 Pedidos dos Usuários</h2>
+      <h2 className="titulo">Pedidos dos Usuários</h2>
       <table className="tabela-pedidos">
         <thead>
           <tr>
