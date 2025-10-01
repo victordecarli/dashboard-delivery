@@ -9,15 +9,15 @@ export default function ContatoRespostas({ respostas }) {
   return (
     // Container da lista de respostas
     <div className="respostas-container">
-      <h1>Respostas Recebidas</h1>
+      <h1 className="respostas-titulo">Respostas Recebidas</h1>
       {/* Mensagem caso não haja respostas */}
       {respostas.length === 0 && <p>Nenhuma resposta recebida ainda.</p>}
       {/* Lista de respostas */}
       <ul className="respostas-lista">
         {respostas.map((r, idx) => (
           <li key={idx} className="resposta-item">
-            <strong>{r.nome}</strong> ({r.email})<br />
-            <span>{r.mensagem}</span>
+            <strong style={{ color: "#000" }}>{r.nome}</strong> ({r.email})<br />
+            <span style={{ color: "#000" }}>{r.mensagem}</span>
             <div className="resposta-data">{r.data}</div>
           </li>
         ))}
@@ -32,6 +32,9 @@ export default function ContatoRespostas({ respostas }) {
             background: var(--localizacao-bg, #fff);
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          }
+          .respostas-titulo {
+            color: #000;
           }
           .respostas-lista {
             list-style: none;
@@ -55,3 +58,4 @@ export default function ContatoRespostas({ respostas }) {
     </div>
   );
 }
+export { ContatoRespostas };

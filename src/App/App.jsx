@@ -3,8 +3,8 @@ import Localizacao from '../components/localizacao/localizacao';
 import { Login } from '../components/Login/Login';
 import Pedidos from '../components/Pedidos/Pedidos';
 import React, { useState } from "react";
-import ContatoPesquisa from '../components/contato/ContatoPesquisa';
-import ContatoRespostas from '../components/contato/ContatoRespostas';
+import ContatoPesquisa from '../components/Contato/ContatoPesquisa';
+import ContatoRespostas from '../components/Contato/ContatoResposta';
 
 export function App() {
 

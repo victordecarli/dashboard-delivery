@@ -28,7 +28,7 @@ export default function ContatoPesquisa({ onEnviar }) {
   return (
     // Container do formulário de contato
     <div className="contato-container">
-      <h1>Pesquisa de Contato</h1>
+      <h1 className="contato-titulo">Pesquisa de Contato</h1>
       {/* Formulário de contato */}
       <form onSubmit={handleSubmit} className="contato-form">
         <label>
@@ -71,6 +71,9 @@ export default function ContatoPesquisa({ onEnviar }) {
             background: var(--localizacao-bg, #fff);
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          }
+          .contato-titulo {
+            color: #000;
           }
           .contato-form {
             display: flex;
@@ -117,3 +120,4 @@ export default function ContatoPesquisa({ onEnviar }) {
     </div>
   );
 }
+export { ContatoPesquisa };
