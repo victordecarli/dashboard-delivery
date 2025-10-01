@@ -1,0 +1,36 @@
+.pedidos-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabela-pedidos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-pedidos th {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.tabela-pedidos td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabela-pedidos tr:hover {
+  background: #f5f5f5;
+}

@@ -1,5 +1,6 @@
 import {Cadastro} from '../components/Cadastro/Cadastro';
 import { Login } from '../components/Login/Login';
+import Pedidos from '../components/Pedidos/Pedidos';
 
 export function App() {
 
@@ -8,6 +9,7 @@ export function App() {
       <h3>Componente App</h3>
       <Login/>
       <Cadastro/>
+      <Pedidos/>
     </div>
   )
 }
