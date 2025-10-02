@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { API_FAKE } from '../../data/data';
+import { API_FAKE } from '@/data/data';
 
 const pedidos = API_FAKE.pedidos;
 
@@ -24,9 +24,9 @@ const valorTotal = calcularValorTotal();
 
 export default function Pedidos() {
   return (
-    <div className="flex items-center justify-center min-h-screen flex-col p-6">
-      <div className="w-full max-w-5xl bg-gray-100 rounded-xl p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center tracking-tight">
+    <div className="p-6">
+      <div className="w-full bg-gray-100 rounded-xl p-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 tracking-tight">
           Lista de Pedidos
         </h1>
         <Table>
