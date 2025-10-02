@@ -5,7 +5,7 @@ import Pedidos from '../components/Pedidos/Pedidos';
 import { useState } from 'react';
 import ContatoPesquisa from '../components/Contato/ContatoPesquisa';
 import ContatoRespostas from '../components/Contato/ContatoResposta';
-
+import '../global.css';
 export function App() {
   const [userLogin, setUserLogin] = useState(false);
   const [userNew, setUserNew] = useState(true);
