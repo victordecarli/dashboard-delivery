@@ -33,11 +33,6 @@ const items = [
     url: '/contato',
     icon: Phone,
   },
-  {
-    title:'Login',
-    url: 'login',
-    icon: User,
-  },
 ];
 
 export function AppSidebar() {
