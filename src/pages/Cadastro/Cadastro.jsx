@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../Login/cliente';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,9 +14,32 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export const Cadastro = ({ setUserNew }) => {
-  const handleCadastro = (e) => {
-    e.preventDefault;
-    setUserNew((prev) => !prev);
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmSenha, setConfirmSenha] = useState('');
+  const navigate = useNavigate();
+
+  const handleCadastro = async (e) => {
+    e.preventDefault();
+
+    // 👉 Verifica se as senhas são iguais antes de cadastrar
+    if (senha !== confirmSenha) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password: senha,
+    });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      alert('Cadastro realizado! Verifique seu email e confirme sua conta.');
+      setUserNew(true);
+      navigate('/login');
+    }
   };
 
   return (
@@ -29,29 +56,42 @@ export const Cadastro = ({ setUserNew }) => {
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
+
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Senha</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Esqueceu sua senha?
-                </a>
-              </div>
-              <Input id="password" type="password" required />
+              <Label htmlFor="password">Senha</Label>
+              <Input
+                id="password"
+                type="password"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
             </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                value={confirmSenha}
+                onChange={(e) => setConfirmSenha(e.target.value)}
+                required
+              />
+            </div>
+
             <Button type="submit" className="w-full">
-              Login
+              Cadastrar
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col ">
-          <Button variant="link" className="w-full">
-            Criar conta
+        <CardFooter className="flex flex-col">
+          <Button variant="link" className="w-full" onClick={() => navigate('/login')}>
+            Já tenho conta
           </Button>
         </CardFooter>
       </Card>

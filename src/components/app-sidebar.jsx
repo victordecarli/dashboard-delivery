@@ -1,4 +1,4 @@
-import { Home, ListOrdered, Phone, ShoppingBasketIcon } from 'lucide-react';
+import { Home, ListOrdered, Phone, ShoppingBasketIcon, User} from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 
 import {
@@ -33,6 +33,11 @@ const items = [
     url: '/contato',
     icon: Phone,
   },
+  {
+    title:'Login',
+    url: 'login',
+    icon: User,
+  },
 ];
 
 export function AppSidebar() {
@@ -58,6 +63,7 @@ export function AppSidebar() {
                   </SidebarMenuItem>
                 );
               })}
+              
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
