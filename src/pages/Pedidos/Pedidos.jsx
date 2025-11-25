@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import {
   Table,
   TableBody,
@@ -41,10 +42,10 @@ export default function Pedidos() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {pedidos.map((pedido, idx) => (
+            {pedidos.map((pedido, index) => (
               <TableRow
                 key={pedido.id}
-                className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
+                className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
               >
                 <TableCell className="font-medium">{pedido.id}</TableCell>
                 <TableCell>{pedido.cliente}</TableCell>
@@ -67,6 +68,12 @@ export default function Pedidos() {
                   >
                     {pedido.status}
                   </span>
+                </TableCell>
+                <TableCell>
+                  <Link to={`${pedido.id}/editar`}>Editar</Link>
+                </TableCell>
+                <TableCell>
+                  <Link to={`${pedido.id}`}>Detalhes</Link>
                 </TableCell>
               </TableRow>
             ))}
