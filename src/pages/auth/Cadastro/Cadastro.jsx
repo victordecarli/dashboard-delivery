@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../Login/cliente';
+import { supabase } from '@/lib/supabase';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-export const Cadastro = ({ setUserNew }) => {
+export default function Cadastro({ setUserNew }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmSenha, setConfirmSenha] = useState('');
@@ -90,11 +90,15 @@ export const Cadastro = ({ setUserNew }) => {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col">
-          <Button variant="link" className="w-full" onClick={() => navigate('/login')}>
+          <Button
+            variant="link"
+            className="w-full"
+            onClick={() => navigate('/login')}
+          >
             Já tenho conta
           </Button>
         </CardFooter>
       </Card>
     </div>
   );
-};
+}

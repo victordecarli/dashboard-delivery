@@ -1,25 +1,30 @@
 import { useState } from "react";
-import { supabase } from '../Login/cliente';
+import { useNavigate } from "react-router-dom";
+import { supabase } from '@/lib/supabase';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function ForgotPassword() {
-  const [email, setEmail] = useState("");
+export default function ResetPassword() {
+  const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const navigate = useNavigate(); 
 
-  const handleForgot = async (e) => {
+  const handleReset = async (e) => {
     e.preventDefault();
     setMsg("");
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:5173/reset-password",
-    });
+    const { error } = await supabase.auth.updateUser({ password });
 
     if (error) {
       setMsg(error.message);
     } else {
-      setMsg("E-mail enviado! Verifique sua caixa de entrada.");
+      setMsg("Senha atualizada com sucesso! Indo para página de login");
+
+      
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     }
   };
 
@@ -27,15 +32,15 @@ export default function ForgotPassword() {
     <div className="w-full min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-sm shadow-xl">
         <CardHeader>
-          <CardTitle className="text-xl text-center">Esqueci a Senha</CardTitle>
+          <CardTitle className="text-xl text-center">Redefinir Senha</CardTitle>
         </CardHeader>
 
-        <form onSubmit={handleForgot}>
+        <form onSubmit={handleReset}>
           <CardContent className="space-y-4">
             <Input
-              type="email"
-              placeholder="Digite seu e-mail"
-              onChange={(e) => setEmail(e.target.value)}
+              type="password"
+              placeholder="Nova senha"
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
 
@@ -44,7 +49,7 @@ export default function ForgotPassword() {
 
           <CardFooter className="flex justify-center">
             <Button type="submit" className="w-full">
-              Enviar link de redefinição
+              Salvar nova senha
             </Button>
           </CardFooter>
         </form>
