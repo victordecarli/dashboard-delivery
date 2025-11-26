@@ -1,9 +1,11 @@
-import { Home, ListOrdered, Phone, ShoppingBasketIcon, User} from 'lucide-react';
-import { Link, useLocation } from 'react-router';
+import { Home, ListOrdered, Phone, ShoppingBasketIcon, LogOut } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { supabase } from '@/lib/supabase';
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -37,6 +39,12 @@ const items = [
 
 export function AppSidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/auth/login');
+  };
 
   return (
     <Sidebar>
@@ -58,11 +66,20 @@ export function AppSidebar() {
                   </SidebarMenuItem>
                 );
               })}
-              
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton onClick={handleLogout}>
+              <LogOut />
+              <span>Sair</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
