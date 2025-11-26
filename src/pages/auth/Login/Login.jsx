@@ -40,45 +40,46 @@ export default function Login({ setUserLogin }) {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-sm flex m-auto">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
+    <Card className="w-full shadow-lg">
+      <CardHeader>
+        <CardTitle className="text-2xl text-center">Login</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="seu@email.com"
+              required
+            />
+          </div>
+          <div className="grid gap-2">
+            <div className="flex items-center">
+              <Label htmlFor="password">Senha</Label>
+              <a
+                onClick={() => navigate('/auth/esqueciSenha')}
+                className="ml-auto inline-block text-sm underline-offset-4 hover:underline cursor-pointer"
+              >
+                Esqueceu sua senha?
+              </a>
             </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Senha</Label>
-                <a
-                  onClick={() => navigate('/esqueciSenha')}
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Esqueceu sua senha?
-                </a>
-              </div>
-              <Input id="password" type="password" required />
-            </div>
-            <Button type="submit" className="w-full">
-              Login
-            </Button>
-          </form>
-        </CardContent>
-        <CardFooter className="flex flex-col">
-          <Button variant="link" className="w-full" asChild>
-            <Link to="/cadastro">Criar conta</Link>
+            <Input id="password" type="password" required />
+          </div>
+          <Button type="submit" className="w-full">
+            Entrar
           </Button>
-        </CardFooter>
-      </Card>
-    </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex flex-col">
+        <div className="text-sm text-center text-gray-600">
+          Não tem uma conta?{' '}
+          <Link to="/auth/cadastro" className="text-blue-600 hover:underline font-medium">
+            Criar conta
+          </Link>
+        </div>
+      </CardFooter>
+    </Card>
   );
 }
